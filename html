@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Tournament</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sudoku Tournament</h1>
+            <div class="tournament-info">
+                <div class="info-item">
+                    <span class="label">Score:</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Time:</span>
+                    <span class="value" id="timer">00:00</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Mistakes:</span>
+                    <span class="value" id="mistakes">0/3</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-container">
+            <div class="sudoku-board" id="sudoku-board"></div>
+            
+            <div class="controls">
+                <div class="difficulty-selector">
+                    <button class="diff-btn active" data-difficulty="easy">Easy</button>
+                    <button class="diff-btn" data-difficulty="medium">Medium</button>
+                    <button class="diff-btn" data-difficulty="hard">Hard</button>
+                </div>
+                
+                <div class="number-pad">
+                    <button class="num-btn" data-number="1">1</button>
+                    <button class="num-btn" data-number="2">2</button>
+                    <button class="num-btn" data-number="3">3</button>
+                    <button class="num-btn" data-number="4">4</button>
+                    <button class="num-btn" data-number="5">5</button>
+                    <button class="num-btn" data-number="6">6</button>
+                    <button class="num-btn" data-number="7">7</button>
+                    <button class="num-btn" data-number="8">8</button>
+                    <button class="num-btn" data-number="9">9</button>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="action-btn" id="erase-btn">Erase</button>
+                    <button class="action-btn" id="hint-btn">Hint</button>
+                    <button class="action-btn primary" id="new-game-btn">New Game</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="leaderboard">
+            <h2>Tournament Leaderboard</h2>
+            <table id="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Difficulty</th>
+                        <th>Score</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr>
+                        <td colspan="4">No games completed yet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="win-modal">
+        <div class="modal-content">
+            <h2>🎉 Congratulations!</h2>
+            <p>You solved the puzzle!</p>
+            <div class="modal-stats">
+                <p><strong>Final Score:</strong> <span id="final-score"></span></p>
+                <p><strong>Time:</strong> <span id="final-time"></span></p>
+                <p><strong>Difficulty:</strong> <span id="final-difficulty"></span></p>
+            </div>
+            <button class="action-btn primary" id="play-again-btn">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Tournament</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sudoku Tournament</h1>
+            <div class="tournament-info">
+                <div class="info-item">
+                    <span class="label">Score:</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Time:</span>
+                    <span class="value" id="timer">00:00</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Mistakes:</span>
+                    <span class="value" id="mistakes">0/3</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-container">
+            <div class="sudoku-board" id="sudoku-board"></div>
+            
+            <div class="controls">
+                <div class="difficulty-selector">
+                    <button class="diff-btn active" data-difficulty="easy">Easy</button>
+                    <button class="diff-btn" data-difficulty="medium">Medium</button>
+                    <button class="diff-btn" data-difficulty="hard">Hard</button>
+                </div>
+                
+                <div class="number-pad">
+                    <button class="num-btn" data-number="1">1</button>
+                    <button class="num-btn" data-number="2">2</button>
+                    <button class="num-btn" data-number="3">3</button>
+                    <button class="num-btn" data-number="4">4</button>
+                    <button class="num-btn" data-number="5">5</button>
+                    <button class="num-btn" data-number="6">6</button>
+                    <button class="num-btn" data-number="7">7</button>
+                    <button class="num-btn" data-number="8">8</button>
+                    <button class="num-btn" data-number="9">9</button>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="action-btn" id="erase-btn">Erase</button>
+                    <button class="action-btn" id="hint-btn">Hint</button>
+                    <button class="action-btn primary" id="new-game-btn">New Game</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="leaderboard">
+            <h2>Tournament Leaderboard</h2>
+            <table id="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Difficulty</th>
+                        <th>Score</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr>
+                        <td colspan="4">No games completed yet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="win-modal">
+        <div class="modal-content">
+            <h2>🎉 Congratulations!</h2>
+            <p>You solved the puzzle!</p>
+            <div class="modal-stats">
+                <p><strong>Final Score:</strong> <span id="final-score"></span></p>
+                <p><strong>Time:</strong> <span id="final-time"></span></p>
+                <p><strong>Difficulty:</strong> <span id="final-difficulty"></span></p>
+            </div>
+            <button class="action-btn primary" id="play-again-btn">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
